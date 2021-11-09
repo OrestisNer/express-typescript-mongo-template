@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      target: prod
+    ports: 
+      - 9876:9876
+    command: npm start
+    depends_on:
+      - mongo
+    environment:
+      MONGO_URI: mongodb://mongo:27017 
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
